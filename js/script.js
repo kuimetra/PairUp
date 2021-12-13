@@ -1,8 +1,14 @@
 const startNewGame = document.getElementById('startNewGame');
 const slider = document.getElementById('difficultyRange');
+const menu = document.querySelector('.menu');
 let firstCard, secondCard, amountOfCards = 6, cardCounter = 0, turnsCounter = 0;
 let isLockedForTurning = false;
 let timerInterval, start;
+
+function changeMenuVisibility(t) {
+    t.classList.toggle('change');
+    menu.classList.toggle('show_menu');
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     loadCards();
