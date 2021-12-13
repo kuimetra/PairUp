@@ -36,6 +36,7 @@ function loadCards() {
     const firstPartOfDeck = cardRange.slice(0, amountOfCards);
     const secondPartOfDeck = firstPartOfDeck.slice();
     const deck = firstPartOfDeck.concat(secondPartOfDeck);
+    shuffleArray(deck);
     let html = '';
     deck.forEach(card => {
         html += `
