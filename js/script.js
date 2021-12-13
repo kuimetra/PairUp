@@ -33,13 +33,11 @@ function loadCards() {
     setDefaultValues();
     const cardRange = range(1, 12);
     shuffleArray(cardRange);
-    const firstCards = cardRange.slice(0, amountOfCards);
-    const secondCards = firstCards.slice();
-    const cardIndexes = firstCards.concat(secondCards);
-    shuffleArray(cardIndexes);
-    console.log(cardIndexes);
+    const firstPartOfDeck = cardRange.slice(0, amountOfCards);
+    const secondPartOfDeck = firstPartOfDeck.slice();
+    const deck = firstPartOfDeck.concat(secondPartOfDeck);
     let html = '';
-    cardIndexes.forEach(card => {
+    deck.forEach(card => {
         html += `
             <div class="memory_card" data-id="${card}">
                 <div class="memory_card_front">

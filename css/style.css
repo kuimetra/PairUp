@@ -95,7 +95,7 @@ main {
     -ms-flex-pack: center;
     justify-content: center;
     height: 40px;
-    width: 263px;
+    width: calc(25% - 60px);
     border: 1px black;
     border-style: none solid;
     font: normal 300 18px/25px Brice, sans-serif;
@@ -217,4 +217,94 @@ label[for="difficultyRange"] {
 
 .copyrights {
     font: normal 300 16px/22px Brice, sans-serif;
+}
+
+@media (max-width: 1200px) {
+    main {
+        -ms-grid-columns: minmax(30px, 90px) 1fr minmax(30px, 90px);
+        grid-template-columns: minmax(30px, 90px) 1fr minmax(30px, 90px);
+    }
+
+    #header_main, #footer {
+        height: 73px;
+    }
+
+    #footer {
+        margin-top: 40px;
+    }
+
+    #header_logo {
+        width: 128px;
+        height: 31px;
+    }
+
+    #nav li {
+        width: 203px;
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    .slider {
+        width: 80px;
+    }
+
+    .memory_card {
+        width: 203px;
+        height: 270px;
+    }
+}
+
+@media (max-width: 992px) {
+    main {
+        -ms-grid-columns: minmax(15px, 30px) 1fr minmax(15px, 30px);
+        grid-template-columns: minmax(15px, 30px) 1fr minmax(15px, 30px);
+    }
+
+    #nav li {
+        width: calc(50% - 60px);
+    }
+
+    /*#nav {*/
+    /*    -webkit-column-gap: unset;*/
+    /*    -moz-column-gap: unset;*/
+    /*    column-gap: unset;*/
+    /*}*/
+    #nav li:nth-child(-n + 2) {
+        border-bottom: 1px solid black;
+    }
+
+    /*#nav li:nth-child(even) {*/
+    /*    border-left: none;*/
+    /*}*/
+    .memory_card {
+        width: 151px;
+        height: 201px;
+    }
+
+    .memory_card_front img, .memory_card_back img {
+        border-radius: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    #nav {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-flow: column wrap;
+        flex-flow: column wrap;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -ms-flex-line-pack: center;
+        align-content: center;
+    }
+
+    #nav li {
+        width: 100%;
+        border-right: none;
+    }
+
+    #nav li:not(:last-child) {
+        border-bottom: 1px solid black;
+    }
 }
