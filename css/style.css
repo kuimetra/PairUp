@@ -1,4 +1,3 @@
-/* brice-light */
 @font-face {
     font-family: 'Brice';
     font-style: normal;
@@ -13,18 +12,40 @@
 * {
     margin: 0;
     padding: 0;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+    width: 16px;
+}
+
+::-webkit-scrollbar-track {
+    border: 1px solid black;
+}
+
+::-webkit-scrollbar-thumb {
+    border: 1px solid black;
+    background-color: white;
+}
+
 main {
+    display: -ms-grid;
     display: grid;
+    -ms-grid-columns: minmax(60px, 150px) 1fr minmax(60px, 150px);
     grid-template-columns: minmax(60px, 150px) 1fr minmax(60px, 150px);
 }
 
 #header {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 3;
     grid-column: 1 / 4;
     height: 80px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     border-bottom: 1px solid black;
     margin-bottom: 80px;
@@ -35,13 +56,22 @@ main {
 }
 
 #main {
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
     grid-column: 2 / 3;
 }
 
 .memory_cards {
     position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row wrap;
     flex-flow: row wrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     gap: 30px;
 }
@@ -51,17 +81,26 @@ main {
     width: 263px;
     height: 350px;
     cursor: pointer;
+    -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
+    -webkit-transform-origin: right;
+    -ms-transform-origin: right;
     transform-origin: right;
+    -webkit-transition: -webkit-transform 1s;
+    transition: -webkit-transform 1s;
+    -o-transition: transform 1s;
     transition: transform 1s;
+    transition: transform 1s, -webkit-transform 1s;
 }
 
 .memory_card.is_flipped {
+    -webkit-transform: translateX(-100%) rotateY(-180deg);
     transform: translateX(-100%) rotateY(-180deg);
 }
 
 .memory_card_front, .memory_card_back {
     position: absolute;
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 }
 
@@ -73,22 +112,35 @@ main {
 }
 
 .memory_card_back {
+    -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
 }
 
 #footer {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 3;
     grid-column: 1 / 4;
     height: 80px;
     border-top: 1px solid black;
     margin-top: 80px;
+    display: -ms-grid;
     display: grid;
+    -ms-grid-columns: inherit;
     grid-template-columns: inherit;
 }
 
 #copyrights_info {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
     grid-column: 2 / 3;
 }
 
