@@ -1,30 +1,34 @@
+let memoryCards, firstCard, secondCard;
+let isLockedForTurning = false;
 eventListeners();
 
 function eventListeners() {
-    window.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
         loadCards();
-        cardFlip();
+        memoryCards.forEach(card => {
+            card.addEventListener('click', flipToFront);
+        });
     });
 }
 
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
+function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
+        [arr[i], arr[j]] = [arr[j], arr[i]];
     }
 }
 
 function range(start, end) {
-    return Array(end - start + 1).fill().map((_, idx) => start + idx)
+    return Array(end - start + 1).fill().map((_, ind) => start + ind);
 }
 
 function loadCards() {
     const firstCards = range(1, 12), secondCards = range(1, 12);
     shuffleArray(firstCards);
     shuffleArray(secondCards);
-    const cardsIndexes = firstCards.concat(secondCards);
+    const cardIndexes = firstCards.concat(secondCards);
     let html = '';
-    cardsIndexes.forEach(card => {
+    cardIndexes.forEach(card => {
         html += `
             <div class="memory_card" data-id="${card}">
                 <div class="memory_card_front">
@@ -37,11 +41,44 @@ function loadCards() {
         `;
     });
     document.querySelector('.memory_cards').innerHTML = html;
+    memoryCards = document.querySelectorAll('.memory_card');
 }
 
-function cardFlip(){
-    const cards = document.querySelectorAll('.memory_card');
-    cards.forEach(card => card.addEventListener('click', () => {
-        card.classList.toggle('is_flipped');
-    }));
+const flipToFront = e => {
+    if (!isLockedForTurning) {
+        const targetCard = e.target.parentElement.parentElement;
+        if (targetCard !== firstCard) {
+            targetCard.classList.add('is_flipped');
+            if (firstCard === undefined) {
+                firstCard = targetCard;
+            } else if (secondCard === undefined) {
+                secondCard = targetCard;
+                checkMatch();
+            }
+        }
+    }
+}
+
+const checkMatch = () => {
+    firstCard.getAttribute('data-id') === secondCard.getAttribute('data-id') ?
+        removeClickEventListener() : flipToBack();
+}
+
+const removeClickEventListener = () => {
+    firstCard.removeEventListener('click', flipToFront);
+    secondCard.removeEventListener('click', flipToFront);
+}
+
+const flipToBack = () => {
+    isLockedForTurning = true;
+    setTimeout(() => {
+        firstCard.classList.remove('is_flipped');
+        secondCard.classList.remove('is_flipped');
+        resetCards();
+    }, 1000);
+}
+
+const resetCards = () => {
+    firstCard = secondCard = undefined;
+    isLockedForTurning = false;
 }
