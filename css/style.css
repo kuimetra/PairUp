@@ -176,7 +176,7 @@ hr {
     -ms-flex-pack: center;
     justify-content: center;
     height: 40px;
-    width: calc(25% - 60px);
+    width: 263px;
     border: 1px black;
     border-style: none solid;
     font: normal 300 18px/25px Brice, sans-serif;
@@ -190,7 +190,7 @@ label[for="difficultyRange"] {
 
 .slider {
     -webkit-appearance: none;
-    width: 130px;
+    width: 120px;
     height: 12px;
     border: 1px solid black;
     border-radius: unset;
@@ -319,32 +319,10 @@ label[for="difficultyRange"] {
 
     .bar1, .bar2, .bar3 {
         width: 25px;
-        height: 3px;
-        background-color: black;
-        margin: 5px 0;
-        -webkit-transition: 0.4s;
-        -o-transition: 0.4s;
-        transition: 0.4s;
-    }
-
-    .change .bar1 {
-        -webkit-transform: rotate(-45deg) translate(-3px, 5px);
-        -ms-transform: rotate(-45deg) translate(-3px, 5px);
-        transform: rotate(-45deg) translate(-3px, 5px);
-    }
-
-    .change .bar2 {
-        opacity: 0;
-    }
-
-    .change .bar3 {
-        -webkit-transform: rotate(45deg) translate(-7px, -8px);
-        -ms-transform: rotate(45deg) translate(-7px, -8px);
-        transform: rotate(45deg) translate(-7px, -8px);
     }
 
     #nav li {
-        width: 203px;
+        width: calc(25% - 60px);
         font-size: 16px;
         line-height: 22px;
     }
