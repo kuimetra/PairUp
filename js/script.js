@@ -1,14 +1,18 @@
-let memoryCards, firstCard, secondCard;
+const startNewGame = document.getElementById('startNewGame');
+const slider = document.getElementById('difficultyRange');
+let firstCard, secondCard, amountOfCards = 6, cardCounter = 0, turnsCounter = 0;
 let isLockedForTurning = false;
-eventListeners();
+let timerInterval, start;
 
-function eventListeners() {
-    document.addEventListener('DOMContentLoaded', () => {
-        loadCards();
-        memoryCards.forEach(card => {
-            card.addEventListener('click', flipToFront);
-        });
-    });
+document.addEventListener('DOMContentLoaded', () => {
+    loadCards();
+});
+
+startNewGame.addEventListener('click', loadCards);
+
+slider.oninput = function () {
+    amountOfCards = +this.value;
+    loadCards();
 }
 
 function shuffleArray(arr) {
@@ -23,10 +27,17 @@ function range(start, end) {
 }
 
 function loadCards() {
-    const firstCards = range(1, 12), secondCards = range(1, 12);
-    shuffleArray(firstCards);
-    shuffleArray(secondCards);
+    if (timerInterval) {
+        stopTimer();
+    }
+    setDefaultValues();
+    const cardRange = range(1, 12);
+    shuffleArray(cardRange);
+    const firstCards = cardRange.slice(0, amountOfCards);
+    const secondCards = firstCards.slice();
     const cardIndexes = firstCards.concat(secondCards);
+    shuffleArray(cardIndexes);
+    console.log(cardIndexes);
     let html = '';
     cardIndexes.forEach(card => {
         html += `
@@ -41,10 +52,16 @@ function loadCards() {
         `;
     });
     document.querySelector('.memory_cards').innerHTML = html;
-    memoryCards = document.querySelectorAll('.memory_card');
+    const memoryCards = document.querySelectorAll('.memory_card');
+    memoryCards.forEach(card => {
+        card.addEventListener('click', flipToFront);
+    });
 }
 
 const flipToFront = e => {
+    if (!timerInterval) {
+        startTimer();
+    }
     if (!isLockedForTurning) {
         const targetCard = e.target.parentElement.parentElement;
         if (targetCard !== firstCard) {
@@ -62,11 +79,18 @@ const flipToFront = e => {
 const checkMatch = () => {
     firstCard.getAttribute('data-id') === secondCard.getAttribute('data-id') ?
         removeClickEventListener() : flipToBack();
+    turnsCounter++;
+    document.getElementById('turns').innerHTML = turnsCounter;
 }
 
 const removeClickEventListener = () => {
     firstCard.removeEventListener('click', flipToFront);
     secondCard.removeEventListener('click', flipToFront);
+    cardCounter++;
+    if (cardCounter === amountOfCards) {
+        stopTimer();
+    }
+    resetCards();
 }
 
 const flipToBack = () => {
@@ -81,4 +105,29 @@ const flipToBack = () => {
 const resetCards = () => {
     firstCard = secondCard = undefined;
     isLockedForTurning = false;
+}
+
+function format(milliseconds, scale, modulo) {
+    milliseconds = Math.floor(milliseconds / scale) % modulo;
+    return milliseconds.toString().padStart(2, 0);
+}
+
+const startTimer = () => {
+    start = Date.now();
+    timerInterval = setInterval(function () {
+        const milliseconds = Date.now() - start;
+        document.getElementById('time').innerHTML =
+            `${format(milliseconds, 60000, 60)}:${format(milliseconds, 1000, 60)}`;
+    }, 1000);
+}
+
+function stopTimer() {
+    clearInterval(timerInterval);
+}
+
+function setDefaultValues() {
+    document.getElementById('turns').innerHTML = '0';
+    document.getElementById('time').innerHTML = '00:00';
+    cardCounter = turnsCounter = 0;
+    timerInterval = undefined;
 }

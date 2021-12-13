@@ -40,7 +40,10 @@ main {
     -ms-grid-column: 1;
     -ms-grid-column-span: 3;
     grid-column: 1 / 4;
-    height: 80px;
+    margin-bottom: 40px;
+}
+
+#header_main {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -48,7 +51,76 @@ main {
     -ms-flex-align: center;
     align-items: center;
     border-bottom: 1px solid black;
-    margin-bottom: 80px;
+    height: 80px;
+}
+
+#menu {
+    border-bottom: 1px solid black;
+}
+
+#nav {
+    list-style: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-column-gap: 30px;
+    -moz-column-gap: 30px;
+    column-gap: 30px;
+}
+
+#startNewGame {
+    font: normal 300 18px/25px Brice, sans-serif;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
+#nav li {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: 40px;
+    width: 263px;
+    border: 1px black;
+    border-style: none solid;
+    font: normal 300 18px/25px Brice, sans-serif;
+    text-align: center;
+}
+
+label[for="difficultyRange"] {
+    margin-right: 15px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 130px;
+    height: 12px;
+    border: 1px solid black;
+    background: white;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: black;
+    cursor: pointer;
 }
 
 #header_logo {
@@ -89,7 +161,6 @@ main {
     -webkit-transition: -webkit-transform 1s;
     transition: -webkit-transform 1s;
     -o-transition: transform 1s;
-    transition: transform 1s;
     transition: transform 1s, -webkit-transform 1s;
 }
 

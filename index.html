@@ -12,7 +12,22 @@
 <body>
 <main>
     <header id="header">
-        <img id="header_logo" src="img/logo.svg" alt="Pair Up logo" height="39" width="154">
+        <div id="header_main">
+            <img id="header_logo" src="img/logo.svg" alt="Pair Up logo" height="39" width="154">
+        </div>
+        <div id="menu">
+            <ul id="nav">
+                <li>
+                    <button id="startNewGame">start new game</button>
+                </li>
+                <li>
+                    <label for="difficultyRange">difficulty</label>
+                    <input type="range" min="4" max="12" value="6" step="2" class="slider" id="difficultyRange">
+                </li>
+                <li>turns made:&nbsp;<span id="turns">0</span></li>
+                <li>elapsed time:&nbsp;<span id="time">00:00</span></li>
+            </ul>
+        </div>
     </header>
     <section id="main">
         <div class="memory_cards">
@@ -23,7 +38,6 @@
             <div class="copyrights">Pair Up &#169; 2021</div>
             <div class="copyrights">by Alina Artemiuk</div>
         </div>
-
     </footer>
 </main>
 <script src="js/script.js"></script>
