@@ -76,6 +76,7 @@ main {
 }
 
 #startNewGame {
+    color: black;
     font: normal 300 18px/25px Brice, sans-serif;
     cursor: pointer;
     background: none;
@@ -100,6 +101,7 @@ main {
     border-style: none solid;
     font: normal 300 18px/25px Brice, sans-serif;
     text-align: center;
+    color: black;
 }
 
 label[for="difficultyRange"] {
@@ -219,6 +221,7 @@ label[for="difficultyRange"] {
 
 .copyrights {
     font: normal 300 16px/22px Brice, sans-serif;
+    color: black;
 }
 
 @media (max-width: 1200px) {
