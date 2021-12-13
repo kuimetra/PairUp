@@ -111,6 +111,7 @@ label[for="difficultyRange"] {
     width: 130px;
     height: 12px;
     border: 1px solid black;
+    border-radius: unset;
     background: white;
 }
 
@@ -120,6 +121,7 @@ label[for="difficultyRange"] {
     width: 12px;
     height: 12px;
     background: black;
+    border: 1px solid black;
     cursor: pointer;
 }
 
