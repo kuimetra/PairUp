@@ -466,9 +466,13 @@ label[for="difficultyRange"] {
         transform: rotate(45deg) translate(-6px, -7px);
     }
 
+    .memory_cards {
+        gap: 25px;
+    }
+
     .memory_card {
-        width: 123px;
-        height: 165px;
+        width: 118px;
+        height: 159px;
     }
 
     .copyrights {
