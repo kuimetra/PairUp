@@ -355,6 +355,10 @@ label[for="difficultyRange"] {
         width: 100px;
     }
 
+    .memory_cards {
+        gap: 25px;
+    }
+
     .memory_card {
         width: 151px;
         height: 201px;
@@ -385,6 +389,10 @@ label[for="difficultyRange"] {
 
     #nav li:not(:last-child) {
         border-bottom: 1px solid black;
+    }
+
+    .memory_cards {
+        gap: 20px;
     }
 
     .copyrights {
@@ -418,6 +426,10 @@ label[for="difficultyRange"] {
         -webkit-transform: rotate(45deg) translate(-8px, -7px);
         -ms-transform: rotate(45deg) translate(-8px, -7px);
         transform: rotate(45deg) translate(-8px, -7px);
+    }
+
+    .memory_cards {
+        gap: 15px;
     }
 
     .memory_card {
