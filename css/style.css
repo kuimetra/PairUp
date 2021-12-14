@@ -439,7 +439,7 @@ label[for="difficultyRange"] {
     }
 }
 
-@media (max-width: 319.98px) {
+@media (max-width: 321px) {
     #header_main, #footer {
         height: 64px;
     }
@@ -472,7 +472,7 @@ label[for="difficultyRange"] {
     }
 
     .copyrights {
-        font-size: 9px;
-        line-height: 13px;
+        font-size: 10px;
+        line-height: 14px;
     }
 }
