@@ -438,3 +438,41 @@ label[for="difficultyRange"] {
         height: 176px;
     }
 }
+
+@media (max-width: 319.98px) {
+    #header_main, #footer {
+        height: 64px;
+    }
+
+    #header_logo {
+        width: 85px;
+        height: 21px;
+    }
+
+    .bar1, .bar2, .bar3 {
+        width: 20px;
+        margin: 3px 0;
+    }
+
+    .change .bar1 {
+        -webkit-transform: rotate(-45deg) translate(-2px, 2px);
+        -ms-transform: rotate(-45deg) translate(-2px, 2px);
+        transform: rotate(-45deg) translate(-2px, 2px);
+    }
+
+    .change .bar3 {
+        -webkit-transform: rotate(45deg) translate(-6px, -7px);
+        -ms-transform: rotate(45deg) translate(-6px, -7px);
+        transform: rotate(45deg) translate(-6px, -7px);
+    }
+
+    .memory_card {
+        width: 123px;
+        height: 165px;
+    }
+
+    .copyrights {
+        font-size: 9px;
+        line-height: 13px;
+    }
+}
