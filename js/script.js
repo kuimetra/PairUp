@@ -37,7 +37,7 @@ function loadCards() {
         stopTimer();
     }
     setDefaultValues();
-    const cardRange = range(1, 12);
+    const cardRange = range(1, 18);
     shuffleArray(cardRange);
     const firstPartOfDeck = cardRange.slice(0, amountOfCards);
     const secondPartOfDeck = firstPartOfDeck.slice();
