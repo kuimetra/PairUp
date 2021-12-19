@@ -1,6 +1,7 @@
 const startNewGame = document.getElementById('startNewGame');
 const slider = document.getElementById('difficultyRange');
 const menu = document.querySelector('.menu');
+const maxAmountOfCards = 18;
 let firstCard, secondCard, amountOfCards = 6, cardCounter = 0, turnsCounter = 0;
 let isLockedForTurning = false;
 let timerInterval, start;
@@ -37,7 +38,7 @@ function loadCards() {
         stopTimer();
     }
     setDefaultValues();
-    const cardRange = range(1, 18);
+    const cardRange = range(1, maxAmountOfCards);
     shuffleArray(cardRange);
     const firstPartOfDeck = cardRange.slice(0, amountOfCards);
     const secondPartOfDeck = firstPartOfDeck.slice();
@@ -46,7 +47,7 @@ function loadCards() {
     let html = '';
     deck.forEach(card => {
         html += `
-            <div class="memory_card" data-id="${card}">
+            <div class="memory_card">
                 <div class="memory_card_front">
                     <img src="img/front_side.jpg" alt="Front side" width="450" height="600">
                 </div>
@@ -81,9 +82,13 @@ const flipToFront = e => {
     }
 }
 
+function getImgSrc(card) {
+    return card.getElementsByTagName('img')[1].getAttribute('src').replace(/(\D+)/g, '');
+}
+
 const checkMatch = () => {
-    firstCard.getAttribute('data-id') === secondCard.getAttribute('data-id') ?
-        removeClickEventListener() : flipToBack();
+    let src1 = getImgSrc(firstCard), src2 = getImgSrc(secondCard);
+    src1 === src2 ? removeClickEventListener() : flipToBack();
     turnsCounter++;
     document.getElementById('turns').innerHTML = turnsCounter;
 }
